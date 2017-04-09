@@ -11,19 +11,15 @@ module.exports = function(){
     
     //middleware
     app.use(express.static('./public'));
-	app.use(express.static('./public'));
-	app.use(bodyParser.urlencoded({extened: true}));
-	app.use(bodyParser.json());
-	app.use(require('method-override'));
 
 	app.set('view engine', 'ejs');
 	app.set('views', './app/views');
-	app.set('view engine', 'ejs');
-	app.set('views','./app/views');
-		
-//		app.use(app.router);
+	
 
-	//	home(app)
+	app.use(bodyParser.urlencoded({extended: true}));
+	app.use(bodyParser.json());
+	app.use(require('method-override')());
+
 	load('models', {cwd: 'app'})
 		.then('controllers')
 		.then('routes')
